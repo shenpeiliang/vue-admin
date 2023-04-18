@@ -1,0 +1,109 @@
+:root {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  margin: 0;
+
+  --text-color-1: #909399;
+  --bg-header: #1f262d;
+  --bg-main: #f2f3f5;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-width: 980px;
+  min-height: 100vh;
+}
+
+//flex布局
+.flex-wrap {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.ui-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  flex: 1;
+}
+
+.ui-flex__item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+}
+
+.flex-align-items-center {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  flex: 1;
+}
+
+.flex-justify-content-center {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  flex: 1;
+}
+
+.flex-justify-content-left {
+  display: flex;
+  justify-content: flex-start;
+  overflow: hidden;
+  flex: 1;
+}
+
+.flex-justify-content-right {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  flex: 1;
+}
+
+.flex-column{
+    display: flex;
+    flex-flow: column;
+    flex: 1;
+}
+
+.text-center {
+  text-align: center;
+}
+
+//文本省略
+.ui-text-overflow {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+@for $i from 2 to 10 {
+  .ui-text-overflow-#{$i} {
+    -webkit-line-clamp: #{$i};
+  }
+}
+
+#app {
+  max-width: 1280px;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.form-item-section {
+  padding-bottom: 12px;
+}
