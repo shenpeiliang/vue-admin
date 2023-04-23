@@ -6,7 +6,7 @@ export default ({ mode }) => {
   //参数mode为开放模式或生产模式
   //console.log(mode);  // development or product
   const env = loadEnv(mode, process.cwd());   // 获取.env文件里定义的环境变量
-  console.log(env);   //变量在命令行里打印出来
+  //console.log(env);   //变量在命令行里打印出来
 
   return defineConfig({
     plugins: [vue()],
@@ -25,7 +25,7 @@ export default ({ mode }) => {
       // 跨域代理配置
       proxy: {
         "/api": {
-          target: "http://localhost:8080/", //
+          target: env.VITE_SERVER_URL, //
           changeOrigin: true,
           rewrite: path => path.replace(/^\/api/, "")
         }

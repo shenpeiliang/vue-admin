@@ -39,7 +39,7 @@ export const useBarStore = defineStore('bar', {
 
         },
         //打开指定路由
-        openRouteByIndex(index) {
+        openRouteByIndex(router, index) {
             if (router.currentRoute.value.name != this.history[index].name) {
                 router.push(this.history[index])
             }

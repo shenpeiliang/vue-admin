@@ -62,7 +62,7 @@ const closeBar = (index) => {
 };
 
 const openBar = (index) => {
-  barStore.openRouteByIndex(index);
+  barStore.openRouteByIndex(router, index);
 };
 </script>
 <style lang="scss">

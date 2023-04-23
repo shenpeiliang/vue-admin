@@ -17,12 +17,7 @@ const instance = axios.create({
 // 2.请求拦截
 instance.interceptors.request.use(
   (config) => {
-    // let token = user.getToken()
-    // if (token) {
-    //   config.headers['token'] = token
-    // }
-
-    config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+    config.headers['Content-Type'] = 'multipart/form-data'
     config.headers['Accept'] = 'application/json, text/javascript, */*; q=0.01'
 
     return config

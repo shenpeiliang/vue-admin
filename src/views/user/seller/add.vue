@@ -1,31 +1,55 @@
 <template>
-  <div>
-    <h1>用户列表</h1>
-    <el-table :data="pageData">
-      <el-table-column prop="username" label="用户名"></el-table-column>
-      <el-table-column prop="email" label="邮箱"></el-table-column>
-    </el-table>
-  </div>
+  <el-card>
+    <formComponent
+      @submit="submitForm()"
+      @img="changeHeadimgurl"
+      v-model:formData="formData"
+    />
+  </el-card>
 </template>
 <script setup>
-import { onMounted, reactive, ref } from "vue";
+import { reactive, ref, inject } from "vue";
+import service from "@/api/user";
+import formComponent from "./components/form.vue";
 
-const pageData = ref([]);
-const searchData = reactive({
-  keyword: "",
+const formData = reactive({
+  utype: 3,
+  uname: "",
+  password: "",
+  nickname: "",
+  mobile: "",
+  email: "",
+  authentication: "",
+  headimgurl: "",
 });
 
-//Dom挂在完成后
-onMounted(() => {
-  getPageData();
-});
+//重新加载页面
+const reload = inject("reload");
 
-const getPageData = () => {
-  // TODO: 调用后端API获取用户列表
-  pageData.value = [
-    { username: "张三", email: "zhangsan@example.com" },
-    { username: "李四", email: "lisi@example.com" },
-  ];
+const loading = ref(false);
+const submitForm = () => {
+  loading.value = true;
+  //请求
+  service.api
+    .add(formData)
+    .then((res) => {
+      service.ElMessage({
+        message: res.msg,
+        type: "success",
+      });
+
+      reload();
+    })
+    .catch((res) => {
+      service.ElMessage.error(res.msg);
+    })
+    .finally(() => {
+      loading.value = false;
+    });
+};
+//头像修改
+const changeHeadimgurl = (val) => {
+  formData.headimgurl = val;
 };
 </script>
 <style lang="scss" scoped></style>

@@ -1,4 +1,5 @@
 import instance from './base'
+import uploadInstance from './upload'
 import qs from 'qs'
 
 const post = (url, data) => {
@@ -11,6 +12,19 @@ const post = (url, data) => {
           },
         ],
       })
+      .then((res) => {
+        resolve(res)
+      })
+      .catch((err) => {
+        reject(err)
+      })
+  })
+}
+
+const upload = (url, data) => {
+  return new Promise((resolve, reject) => {
+    uploadInstance
+      .post(url, data)
       .then((res) => {
         resolve(res)
       })
@@ -36,4 +50,5 @@ const get = (url, data) => {
 export default {
   post,
   get,
+  upload,
 }
