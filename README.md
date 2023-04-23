@@ -17,3 +17,6 @@ or
 
 npm run dev
 ```
+## Preview
+
+![image](./public/preview.gif)
